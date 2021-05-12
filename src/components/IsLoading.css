@@ -1,0 +1,11 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading span {
+  margin-top: 20px;
+  font-size: 30px;
+}
