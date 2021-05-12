@@ -1,16 +1,16 @@
-import "./Characters.css";
+import "./Comics.css";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 import IsLoading from "../components/IsLoading";
-import Character from "../components/Character";
+import Comic from "../components/Comic";
 import Pagination from "../components/Pagination";
 
-const Characters = ({ page, setPage }) => {
+const Comics = ({ page, setPage }) => {
   const LIMIT = 100;
 
-  const [characters, setCharacters] = useState([]);
+  const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [count, setCount] = useState(0);
 
@@ -18,9 +18,9 @@ const Characters = ({ page, setPage }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://marvel-back-sda.herokuapp.com/characters?page=${page}`
+          `https://marvel-back-sda.herokuapp.com/comics?page=${page}`
         );
-        setCharacters(response.data.results);
+        setComics(response.data.results);
         setCount(response.data.count);
         setIsLoading(false);
       } catch (error) {
@@ -30,20 +30,20 @@ const Characters = ({ page, setPage }) => {
     fetchData();
   }, [page]);
 
-  const charactersDisplay = characters.map((elem, index) => {
-    return <Character key={index} char={elem} />;
+  const comicsDisplay = comics.map((elem, index) => {
+    return <Comic key={index} comic={elem} />;
   });
 
   return isLoading ? (
     <IsLoading />
   ) : (
     <section className="container">
-      <h1>Liste des personnages</h1>
+      <h1>Liste des comics</h1>
       <Pagination page={page} setPage={setPage} count={count} limit={LIMIT} />
-      <div className="characters-container">{charactersDisplay}</div>
+      <div className="comics-container">{comicsDisplay}</div>
       <Pagination page={page} setPage={setPage} count={count} limit={LIMIT} />
     </section>
   );
 };
 
-export default Characters;
+export default Comics;

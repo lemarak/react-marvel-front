@@ -1,8 +1,34 @@
 .character-card {
-  width: 160px;
-  height: 60px;
+  width: 220px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   border: 1px solid lightcoral;
   border-radius: 5px;
   padding: 4px;
   margin: 4px;
+}
+
+.character-card:hover {
+  border: 2px solid lightcoral;
+}
+
+.character-img {
+  height: 120px;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.character-card img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.character-img:hover img {
+  height: 120px;
+  width: 120px;
 }

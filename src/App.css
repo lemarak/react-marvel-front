@@ -12,6 +12,12 @@ body {
 }
 
 h1,
-h3 {
+h3,
+h4 {
   font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }

@@ -1,14 +1,15 @@
-import "./Character.css";
+import "./Comic.css";
+
 import { Link } from "react-router-dom";
 
-const Character = ({ char }) => {
-  const srcChar = `${char.thumbnail.path}.${char.thumbnail.extension}`;
+const Comic = ({ comic }) => {
+  const srcComic = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
   return (
     <div className="character-card">
       <Link>
-        <h3>{char.name}</h3>
+        <h3>{comic.title}</h3>
         <div className="character-img">
-          <img src={srcChar} alt={char.name} />
+          <img src={srcComic} alt={comic.title} />
         </div>
         <div className="character-description">
           {/* <span> {char.description}</span> */}
@@ -18,4 +19,4 @@ const Character = ({ char }) => {
   );
 };
 
-export default Character;
+export default Comic;

@@ -2,5 +2,10 @@
   margin: 20px auto;
   display: flex;
   justify-content: center;
-  font-size: 18px;
+  align-items: center;
+  font-size: 22px;
+}
+
+.pagination .icon {
+  margin: 0 4px;
 }
