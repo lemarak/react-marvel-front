@@ -5,17 +5,17 @@ import { Link } from "react-router-dom";
 const Comic = ({ comic }) => {
   const srcComic = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
   return (
-    <div className="character-card">
-      <Link>
-        <h3>{comic.title}</h3>
-        <div className="character-img">
+    <Link>
+      <div className="comic-card">
+        <div>{comic.title}</div>
+        <div className="comic-img">
           <img src={srcComic} alt={comic.title} />
         </div>
-        <div className="character-description">
+        <div className="comic-description">
           {/* <span> {char.description}</span> */}
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 

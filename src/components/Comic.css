@@ -1,0 +1,35 @@
+.comic-card {
+  width: 220px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid lightseagreen;
+  border-radius: 5px;
+  padding: 4px;
+  margin: 4px;
+}
+
+.comic-card:hover {
+  border: 2px solid lightseagreen;
+}
+
+.comic-img {
+  height: 120px;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.comic-card img {
+  height: 170px;
+  width: 140px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.comic-img:hover img {
+  height: calc(170px * 1.2);
+  width: calc(120px * 1.2);
+}

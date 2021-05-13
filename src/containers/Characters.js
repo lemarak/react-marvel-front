@@ -14,6 +14,7 @@ const Characters = ({ page, setPage }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [count, setCount] = useState(0);
 
+  // Get characters from API
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,10 +31,12 @@ const Characters = ({ page, setPage }) => {
     fetchData();
   }, [page]);
 
+  // Display characters
   const charactersDisplay = characters.map((elem, index) => {
     return <Character key={index} char={elem} />;
   });
 
+  // Render
   return isLoading ? (
     <IsLoading />
   ) : (

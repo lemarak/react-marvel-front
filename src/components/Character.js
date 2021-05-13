@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Character = ({ char }) => {
   const srcChar = `${char.thumbnail.path}.${char.thumbnail.extension}`;
   return (
-    <div className="character-card">
-      <Link>
+    <Link to={`character/${char._id}`}>
+      <div className="character-card">
         <h3>{char.name}</h3>
         <div className="character-img">
           <img src={srcChar} alt={char.name} />
@@ -13,8 +13,8 @@ const Character = ({ char }) => {
         <div className="character-description">
           {/* <span> {char.description}</span> */}
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 

@@ -5,6 +5,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Characters from "./containers/Characters";
 import Comics from "./containers/Comics";
+import CharacterComics from "./containers/CharacterComics";
 
 // Font Awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -28,7 +29,9 @@ function App() {
         <Route path="/comics">
           <Comics page={pageComics} setPage={setPageComics} />
         </Route>
-
+        <Route path="/character/:id">
+          <CharacterComics />
+        </Route>
         <Route path="/">
           <Characters page={pageCharacters} setPage={setPageCharacters} />
         </Route>
