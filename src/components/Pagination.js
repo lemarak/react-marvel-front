@@ -7,7 +7,9 @@ const Pagination = ({ page, setPage, count, limit }) => {
   if (pageMax < page) {
     setPage(1);
   }
-  return (
+  return pageMax <= 1 ? (
+    <div className="pagination"></div>
+  ) : (
     <div className="pagination">
       {page > 1 && (
         <div

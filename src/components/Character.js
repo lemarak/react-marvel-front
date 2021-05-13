@@ -11,7 +11,7 @@ const Character = ({ char }) => {
           <img src={srcChar} alt={char.name} />
         </div>
         <div className="character-description">
-          {/* <span> {char.description}</span> */}
+          <div> {char.description}</div>
         </div>
       </div>
     </Link>

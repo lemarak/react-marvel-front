@@ -5,7 +5,10 @@ import Logo from "../assets/img/logo-marvel.svg";
 const Header = () => {
   return (
     <header>
-      <img className="logo" src={Logo} alt="Logo Marvel" />
+      <Link to="/">
+        <img className="logo" src={Logo} alt="Logo Marvel" />
+      </Link>
+
       <ul>
         <Link to="/">
           <li>Personnages</li>

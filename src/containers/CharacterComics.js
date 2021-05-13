@@ -20,7 +20,7 @@ const CharacterComics = () => {
         const response = await axios.get(
           `https://marvel-back-sda.herokuapp.com/comics/${id}`
         );
-        console.log(response.data.comics);
+        console.log(response.data);
         setCharacter(response.data);
         setComics(response.data.comics);
 
@@ -30,22 +30,36 @@ const CharacterComics = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   // Display comics list
   const comicsDisplay = comics.map((elem, index) => {
     return <Comic key={index} comic={elem} />;
   });
 
+  //   const srcChar = `${character.thumbnail.path}.${character.thumbnail.extension}`;
+
   return isLoading ? (
     <IsLoading />
   ) : (
-    <div>
-      <div className="character-details">
-        <h2>{character.name}</h2>{" "}
+    <section className="container">
+      <div className="character-comics">
+        <div className="character-comics-details">
+          <h2>{character.name}</h2>
+          <div className="character-comics-description">
+            {character.description}
+          </div>
+        </div>
+
+        <div className="character-comics-img">
+          <img
+            src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+            alt={character.name}
+          />
+        </div>
       </div>
       <div className="comics-list">{comicsDisplay}</div>
-    </div>
+    </section>
   );
 };
 

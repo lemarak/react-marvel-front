@@ -7,7 +7,7 @@ import IsLoading from "../components/IsLoading";
 import Character from "../components/Character";
 import Pagination from "../components/Pagination";
 
-const Characters = ({ page, setPage }) => {
+const Characters = ({ page, setPage, search, setSearch }) => {
   const LIMIT = 100;
 
   const [characters, setCharacters] = useState([]);
@@ -18,9 +18,16 @@ const Characters = ({ page, setPage }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://marvel-back-sda.herokuapp.com/characters?page=${page}`
-        );
+        let response = [];
+        if (search) {
+          response = await axios.get(
+            `https://marvel-back-sda.herokuapp.com/search/characters?name=${search}`
+          );
+        } else {
+          response = await axios.get(
+            `https://marvel-back-sda.herokuapp.com/characters?page=${page}`
+          );
+        }
         setCharacters(response.data.results);
         setCount(response.data.count);
         setIsLoading(false);
@@ -29,7 +36,12 @@ const Characters = ({ page, setPage }) => {
       }
     };
     fetchData();
-  }, [page]);
+  }, [page, search]);
+
+  // For search
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
 
   // Display characters
   const charactersDisplay = characters.map((elem, index) => {
@@ -41,7 +53,25 @@ const Characters = ({ page, setPage }) => {
     <IsLoading />
   ) : (
     <section className="container">
-      <h1>Liste des personnages</h1>
+      <div className="characters-header">
+        <h1>Liste des personnages</h1>
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Rechercher un personnage"
+            value={search}
+            onChange={handleSearch}
+          />
+          <button
+            onClick={() => {
+              setSearch("");
+            }}
+          >
+            X
+          </button>
+        </div>
+      </div>
+
       <Pagination page={page} setPage={setPage} count={count} limit={LIMIT} />
       <div className="characters-container">{charactersDisplay}</div>
       <Pagination page={page} setPage={setPage} count={count} limit={LIMIT} />

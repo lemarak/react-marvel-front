@@ -1,14 +1,14 @@
 .character-card {
   width: 220px;
-  height: 180px;
+  height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   border: 1px solid lightcoral;
   border-radius: 5px;
-  padding: 4px;
-  margin: 4px;
+  padding: 6px;
+  margin: 6px;
 }
 
 .character-card:hover {
@@ -32,4 +32,17 @@
 .character-img:hover img {
   height: 120px;
   width: 120px;
+}
+
+.character-description {
+  height: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.character-description div {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -2,3 +2,26 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.comics-header {
+  display: flex;
+}
+
+.comics-header input {
+  width: 200px;
+  height: 30px;
+  margin-left: 40px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding-left: 20px;
+  border-bottom: 1px solid white;
+}
+
+.search button {
+  color: red;
+  background: black;
+}

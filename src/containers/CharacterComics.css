@@ -1,0 +1,29 @@
+.character-comics {
+  display: flex;
+  height: 320px;
+  margin-bottom: 30px;
+}
+
+.character-comics-details {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+}
+
+.character-comics-description {
+  margin-top: 20px;
+}
+
+.character-comics-img {
+  flex: 1;
+}
+.character-comics-img img {
+  height: 300px;
+  border-radius: 10px;
+}
+
+.comics-list {
+  display: flex;
+  flex-wrap: wrap;
+}
