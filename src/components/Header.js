@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Logo from "../assets/img/logo-marvel.svg";
 
-const Header = ({ userToken }) => {
+const Header = ({ userToken, setUser }) => {
   return (
     <header>
       <Link to="/">
@@ -24,7 +24,7 @@ const Header = ({ userToken }) => {
 
       <ul>
         {userToken ? (
-          <li>connexion</li>
+          <li onClick={() => setUser(null)}>déconnexion </li>
         ) : (
           <>
             <Link to="/signup">

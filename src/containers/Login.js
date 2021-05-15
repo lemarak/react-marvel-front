@@ -6,16 +6,51 @@ import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 const Login = ({ setUser }) => {
+  const history = useHistory();
+
+  // form fields
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
+  // error
+  // 0 : not error
+  // 1x : required fields (Front)
+  // 2 : Unauthorized
+  const [error, setError] = useState(0);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const data = {
       email,
       password,
     };
+
+    if (email && password) {
+      setError(0);
+      try {
+        const response = await axios.post(
+          "https://marvel-back-sda.herokuapp.com/user/login",
+          data
+        );
+        const token = response.data.token;
+
+        if (token) {
+          setUser(response.data.token);
+          history.push("/");
+        }
+      } catch (error) {
+        if (error.response.data.message === "Unauthorized") {
+          setError(2);
+        }
+      }
+    } else {
+      if (!email) {
+        setError(11);
+      } else if (!password) {
+        setError(13);
+      }
+    }
   };
 
   return (
@@ -30,7 +65,16 @@ const Login = ({ setUser }) => {
           onChange={(event) => setEmail(event.target.value)}
           value={email}
         />
-
+        {error === 11 && (
+          <span className="signup-login-error-message">
+            * Email obligatoire !
+          </span>
+        )}
+        {error === 2 && (
+          <span className="signup-login-error-message">
+            * Email et/ou mot de passe non valide(s) !
+          </span>
+        )}
         <input
           type="password"
           name="password"
@@ -39,7 +83,11 @@ const Login = ({ setUser }) => {
           onChange={(event) => setPassword(event.target.value)}
           value={password}
         />
-
+        {error === 13 && (
+          <span className="signup-login-error-message">
+            * Mot de passe obligatoire !
+          </span>
+        )}
         <button type="submit">Se connecter</button>
       </form>
       <Link to="/signup">

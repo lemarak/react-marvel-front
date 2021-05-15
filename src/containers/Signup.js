@@ -20,7 +20,6 @@ const Signup = ({ setUser }) => {
   // 2 : different passwords (Front)
   // 3 : email already exists (Back)
   // 4 : user already exists (Back)
-
   const [error, setError] = useState(0);
 
   const handleSubmit = async (event) => {
@@ -31,23 +30,22 @@ const Signup = ({ setUser }) => {
       if (password !== confirmPassword) {
         setError(2);
       } else {
+        const data = {
+          email,
+          username,
+          password,
+        };
         try {
           const response = await axios.post(
             "https://marvel-back-sda.herokuapp.com/user/signup",
-            {
-              email: email,
-              username: username,
-              password: password,
-            }
+            data
           );
           const token = response.data.token;
-          console.log(token);
           if (token) {
             setUser(response.data.token);
             history.push("/");
           }
         } catch (error) {
-          console.log(error.response.data);
           if (error.response.data.message === "email exists") {
             setError(3);
           } else if (error.response.data.message === "username exists") {
