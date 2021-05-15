@@ -19,7 +19,11 @@ const Header = ({ userToken, setUser }) => {
           <li>Comics</li>
         </Link>
 
-        {userToken && <li>Favoris</li>}
+        {userToken && (
+          <Link to="/favorites">
+            <li>Favoris</li>
+          </Link>
+        )}
       </ul>
 
       <ul>

@@ -1,6 +1,6 @@
 .comic-card {
-  width: 220px;
-  height: 260px;
+  width: 280px;
+  height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,21 +15,42 @@
   border: 2px solid lightseagreen;
 }
 
+.comic-card .icon {
+  font-size: 22px;
+  cursor: pointer;
+}
+.comic-card .icon:hover {
+  cursor: pointer;
+  color: lightseagreen;
+}
+
+.comic-card .active {
+  color: lightseagreen;
+  font-size: 26px;
+}
+
 .comic-img {
-  height: 120px;
-  width: 120px;
+  height: 200px;
+  width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .comic-card img {
-  height: 170px;
+  height: 200px;
   width: 140px;
   border-radius: 5px;
   object-fit: cover;
 }
 
+.comic-card .link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .comic-img:hover img {
-  height: calc(170px * 1.2);
-  width: calc(120px * 1.2);
+  height: calc(200px * 1.2);
+  width: calc(140px * 1.2);
 }

@@ -52,7 +52,7 @@ const Comics = ({ page, setPage, search, setSearch }) => {
     <IsLoading />
   ) : (
     <section className="container">
-      <div className="comics-header">
+      <div className="favorites-header">
         <h1>Liste des comics</h1>
         <div className="search">
           <input

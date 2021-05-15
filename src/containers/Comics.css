@@ -3,11 +3,11 @@
   flex-wrap: wrap;
 }
 
-.comics-header {
+.favorites-header {
   display: flex;
 }
 
-.comics-header input {
+.favorites-header input {
   width: 200px;
   height: 30px;
   margin-left: 40px;
@@ -24,4 +24,5 @@
 .search button {
   color: red;
   background: black;
+  border: none;
 }

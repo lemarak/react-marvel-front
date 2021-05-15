@@ -11,8 +11,15 @@
   margin: 6px;
 }
 
+.character-card .link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .character-card:hover {
-  border: 2px solid lightcoral;
+  border: 3px solid lightcoral;
 }
 
 .character-img {
@@ -32,6 +39,15 @@
 .character-img:hover img {
   height: 120px;
   width: 120px;
+}
+
+.character-card .icon {
+  cursor: pointer;
+}
+
+.character-card .icon:hover {
+  cursor: pointer;
+  color: lightcoral;
 }
 
 .character-description {

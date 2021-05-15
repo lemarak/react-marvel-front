@@ -37,7 +37,8 @@ const Signup = ({ setUser }) => {
         };
         try {
           const response = await axios.post(
-            "https://marvel-back-sda.herokuapp.com/user/signup",
+            // "https://marvel-back-sda.herokuapp.com/user/signup",
+            "http://localhost:4000/user/signup",
             data
           );
           const token = response.data.token;
@@ -46,6 +47,7 @@ const Signup = ({ setUser }) => {
             history.push("/");
           }
         } catch (error) {
+          console.log(error.response.data.message);
           if (error.response.data.message === "email exists") {
             setError(3);
           } else if (error.response.data.message === "username exists") {
@@ -64,12 +66,6 @@ const Signup = ({ setUser }) => {
         setError(14);
       }
     }
-    const data = {
-      email,
-      username,
-      password,
-      confirmPassword,
-    };
   };
 
   return (
