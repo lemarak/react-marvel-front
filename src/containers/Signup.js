@@ -6,6 +6,8 @@ import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 const Signup = ({ setUser }) => {
+  const history = useHistory();
+
   // Form fields
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -14,13 +16,56 @@ const Signup = ({ setUser }) => {
 
   // error
   // 0 : not error
-  // 1 : required fields (Front)
+  // 1x : required fields (Front)
   // 2 : different passwords (Front)
+  // 3 : email already exists (Back)
+  // 4 : user already exists (Back)
+
   const [error, setError] = useState(0);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (email && username && password && confirmPassword) {
+      setError(0);
+      if (password !== confirmPassword) {
+        setError(2);
+      } else {
+        try {
+          const response = await axios.post(
+            "https://marvel-back-sda.herokuapp.com/user/signup",
+            {
+              email: email,
+              username: username,
+              password: password,
+            }
+          );
+          const token = response.data.token;
+          console.log(token);
+          if (token) {
+            setUser(response.data.token);
+            history.push("/");
+          }
+        } catch (error) {
+          console.log(error.response.data);
+          if (error.response.data.message === "email exists") {
+            setError(3);
+          } else if (error.response.data.message === "username exists") {
+            setError(4);
+          }
+        }
+      }
+    } else {
+      if (!email) {
+        setError(11);
+      } else if (!username) {
+        setError(12);
+      } else if (!password) {
+        setError(13);
+      } else if (!confirmPassword) {
+        setError(14);
+      }
+    }
     const data = {
       email,
       username,
@@ -41,30 +86,63 @@ const Signup = ({ setUser }) => {
           onChange={(event) => setEmail(event.target.value)}
           value={email}
         />
+        {error === 3 && (
+          <span className="signup-login-error-message">
+            * Cet email a déjà un compte chez nous !
+          </span>
+        )}
+        {error === 11 && (
+          <span className="signup-login-error-message">
+            * Email obligatoire !
+          </span>
+        )}
         <input
           type="text"
           name="username"
           id="username"
           placeholder="Votre nom d'utilisateur"
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(event) => setUsername(event.target.value)}
           value={username}
         />
+        {error === 4 && (
+          <span className="signup-login-error-message">
+            * Cet utilisateur a déjà un compte chez nous !
+          </span>
+        )}
+        {error === 12 && (
+          <span className="signup-login-error-message">Nom obligatoire !</span>
+        )}
         <input
           type="password"
           name="password"
           id="password"
           placeholder="Votre mot de passe"
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(event) => setPassword(event.target.value)}
           value={password}
         />
+        {error === 13 && (
+          <span className="signup-login-error-message">
+            * Mot de passe obligatoire !
+          </span>
+        )}
         <input
           type="password"
           name="password-confirm"
           id="password-confirm"
           placeholder="Confirmation du mot de passe"
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(event) => setConfirmPassword(event.target.value)}
           value={confirmPassword}
         />
+        {error === 2 && (
+          <span className="signup-login-error-message">
+            * Les mots de passe doivent être identiques !
+          </span>
+        )}
+        {error === 14 && (
+          <span className="signup-login-error-message">
+            * Confirmation du mot de passe obligatoire !
+          </span>
+        )}
         <button type="submit">S'inscrire</button>
       </form>
       <Link to="/login">

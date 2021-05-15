@@ -14,7 +14,6 @@ const Login = ({ setUser }) => {
 
     const data = {
       email,
-
       password,
     };
   };
@@ -37,7 +36,7 @@ const Login = ({ setUser }) => {
           name="password"
           id="password"
           placeholder="Votre mot de passe"
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(event) => setPassword(event.target.value)}
           value={password}
         />
 

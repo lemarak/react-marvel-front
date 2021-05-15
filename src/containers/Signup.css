@@ -21,13 +21,19 @@
   height: 40px;
   background-color: black;
   color: #eee;
-  margin: 20px auto;
+  margin-top: 40px;
   border-radius: 5px;
   border: none;
   outline: none;
   font-size: 18px;
   padding-left: 20px;
   border-bottom: 1px solid #ed1c24;
+}
+
+.form-marvel span {
+  color: lightcoral;
+  margin-top: 4px;
+  font-size: 16px;
 }
 
 .form-marvel button {
