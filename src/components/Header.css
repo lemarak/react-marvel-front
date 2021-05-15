@@ -5,13 +5,12 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   color: white;
-  background-color: black;
+  background-color: #111;
 }
 
 header .logo {
-  width: 80px;
+  width: 100px;
 }
 
 header ul {

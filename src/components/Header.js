@@ -1,8 +1,10 @@
 import "./Header.css";
+
 import { Link } from "react-router-dom";
+
 import Logo from "../assets/img/logo-marvel.svg";
 
-const Header = () => {
+const Header = ({ userToken }) => {
   return (
     <header>
       <Link to="/">
@@ -17,7 +19,22 @@ const Header = () => {
           <li>Comics</li>
         </Link>
 
-        <li>Favoris</li>
+        {userToken && <li>Favoris</li>}
+      </ul>
+
+      <ul>
+        {userToken ? (
+          <li>connexion</li>
+        ) : (
+          <>
+            <Link to="/signup">
+              <li>inscription</li>
+            </Link>
+            <Link to="/login">
+              <li>connexion</li>
+            </Link>
+          </>
+        )}
       </ul>
     </header>
   );
