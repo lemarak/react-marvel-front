@@ -35,6 +35,7 @@ const Characters = ({ page, setPage, search, setSearch, userToken }) => {
   // Get characters from API
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         let response = [];
 

@@ -17,14 +17,23 @@ import Login from "./containers/Login";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faSpinner,
-  faAngleLeft,
-  faAngleRight,
+  faBackward,
+  faFastBackward,
+  faForward,
+  faFastForward,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 
 require("dotenv").config();
 
-library.add(faSpinner, faAngleLeft, faAngleRight, faStar);
+library.add(
+  faSpinner,
+  faBackward,
+  faFastBackward,
+  faForward,
+  faFastForward,
+  faStar
+);
 
 function App() {
   // Pagination

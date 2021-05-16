@@ -11,6 +11,18 @@ const Pagination = ({ page, setPage, count, limit }) => {
     <div className="pagination"></div>
   ) : (
     <div className="pagination">
+      {/* First Page */}
+      {page > 1 && pageMax > 2 && (
+        <div
+          onClick={() => {
+            setPage(1);
+          }}
+        >
+          {" "}
+          <FontAwesomeIcon icon="fast-backward" className="icon" />{" "}
+        </div>
+      )}
+      {/* Previous Page */}
       {page > 1 && (
         <div
           onClick={() => {
@@ -18,13 +30,15 @@ const Pagination = ({ page, setPage, count, limit }) => {
           }}
         >
           {" "}
-          <FontAwesomeIcon icon="angle-left" className="icon" size="2x" />{" "}
+          <FontAwesomeIcon icon="backward" className="icon" />{" "}
         </div>
       )}
+      {/* Display pages */}
       <span>
         {" "}
         page {page} / {pageMax}
       </span>
+      {/* Next page */}
       {page < pageMax && (
         <div
           onClick={() => {
@@ -32,7 +46,18 @@ const Pagination = ({ page, setPage, count, limit }) => {
           }}
         >
           {" "}
-          <FontAwesomeIcon icon="angle-right" className="icon" size="2x" />{" "}
+          <FontAwesomeIcon icon="forward" className="icon" />{" "}
+        </div>
+      )}
+      {/* Last page */}
+      {page < pageMax && pageMax > 2 && (
+        <div
+          onClick={() => {
+            setPage(pageMax);
+          }}
+        >
+          {" "}
+          <FontAwesomeIcon icon="fast-forward" className="icon" />{" "}
         </div>
       )}
     </div>

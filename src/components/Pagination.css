@@ -7,5 +7,6 @@
 }
 
 .pagination .icon {
-  margin: 0 4px;
+  margin: 0 6px;
+  cursor: pointer;
 }
