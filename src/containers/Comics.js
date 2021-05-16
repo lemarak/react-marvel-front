@@ -8,13 +8,32 @@ import Comic from "../components/Comic";
 import Pagination from "../components/Pagination";
 
 // Get comics from API
-const Comics = ({ page, setPage, search, setSearch }) => {
+const Comics = ({ page, setPage, search, setSearch, userToken }) => {
   const LIMIT = 100;
 
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [count, setCount] = useState(0);
+  const [favComics, setFavComics] = useState([]);
 
+  // Get favorites
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (userToken) {
+          const response = await axios.get(
+            `${process.env.REACT_APP_PATH_SERVER}/user?token=${userToken}`
+          );
+          setFavComics(response.data.favoritesComics);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // Get comics from API
   useEffect(() => {
     const fetchData = async () => {
       let response = [];
@@ -36,7 +55,7 @@ const Comics = ({ page, setPage, search, setSearch }) => {
       }
     };
     fetchData();
-  }, [page, search]);
+  }, [page, search, userToken]);
 
   // For search
   const handleSearch = (event) => {
@@ -45,7 +64,15 @@ const Comics = ({ page, setPage, search, setSearch }) => {
 
   // Display comics
   const comicsDisplay = comics.map((elem, index) => {
-    return <Comic key={index} comic={elem} />;
+    const isFav = favComics.indexOf(elem._id) !== -1;
+    return (
+      <Comic
+        key={index}
+        comic={elem}
+        isFav={isFav}
+        setFavComics={setFavComics}
+      />
+    );
   });
 
   return isLoading ? (

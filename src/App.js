@@ -61,6 +61,7 @@ function App() {
             setPage={setPageComics}
             search={searchComic}
             setSearch={setSearchComic}
+            userToken={userToken}
           />
         </Route>
         <Route path="/character/:id">

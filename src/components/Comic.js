@@ -8,15 +8,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 require("dotenv").config();
 
-const Comic = ({ comic }) => {
-  const addToFavorites = async () => {
+const Comic = ({ comic, isFav, setFavComics }) => {
+  // Favorites
+  const adminFavorites = async (isFav) => {
     try {
       const token = Cookies.get("userToken");
+      const action = isFav ? "remove" : "add";
+
       const response = await axios.get(
-        `${process.env.REACT_APP_PATH_SERVER}/comic/add-favorites/${token}/${comic._id}`
-        // `http://localhost:4000/comic/add-favorites/${token}/${comic._id}`
+        `${process.env.REACT_APP_PATH_SERVER}/comic/admin-favorites/${token}/${comic._id}/${action}`
       );
-      console.log(response);
+
+      console.log(response.data);
+      setFavComics(response.data.favoritesComics);
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -33,8 +37,10 @@ const Comic = ({ comic }) => {
         <br />
         <FontAwesomeIcon
           icon="star"
-          className={`icon`}
-          onClick={addToFavorites}
+          className={`icon ${isFav && "icon-isfav"}`}
+          onClick={() => {
+            adminFavorites(isFav);
+          }}
         />
         <div className="comic-description">
           {/* <span> {comic.description}</span> */}

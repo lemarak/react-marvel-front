@@ -24,9 +24,12 @@
   color: lightseagreen;
 }
 
-.comic-card .active {
+.comic-card .icon-isfav {
   color: lightseagreen;
-  font-size: 26px;
+}
+
+.comic-card .icon-isfav:hover {
+  color: white;
 }
 
 .comic-img {

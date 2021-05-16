@@ -39,11 +39,11 @@ const Characters = ({ page, setPage, search, setSearch, userToken }) => {
         let response = [];
         if (search) {
           response = await axios.get(
-            `https://marvel-back-sda.herokuapp.com/search/characters?name=${search}`
+            `${process.env.REACT_APP_PATH_SERVER}/search/characters?name=${search}`
           );
         } else {
           response = await axios.get(
-            `https://marvel-back-sda.herokuapp.com/characters?page=${page}`
+            `${process.env.REACT_APP_PATH_SERVER}/characters?page=${page}`
           );
         }
         setCharacters(response.data.results);

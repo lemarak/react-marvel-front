@@ -7,13 +7,16 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Character = ({ char, isFav, setFavCharacters }) => {
-  const addToFavorites = async () => {
+  // favorites
+  const adminFavorites = async (isFav) => {
     try {
       const token = Cookies.get("userToken");
+      const action = isFav ? "remove" : "add";
+
       const response = await axios.get(
-        `${process.env.REACT_APP_PATH_SERVER}/character/add-favorites/${token}/${char._id}`
-        // `http://localhost:4000/comic/add-favorites/${token}/${comic._id}`
+        `${process.env.REACT_APP_PATH_SERVER}/character/admin-favorites/${token}/${char._id}/${action}`
       );
+
       console.log(response.data);
       setFavCharacters(response.data.favoritesCharacters);
     } catch (error) {
@@ -34,7 +37,9 @@ const Character = ({ char, isFav, setFavCharacters }) => {
       <FontAwesomeIcon
         icon="star"
         className={`icon ${isFav && "icon-isfav"}`}
-        onClick={addToFavorites}
+        onClick={() => {
+          adminFavorites(isFav);
+        }}
       />
       <div className="character-description">
         <div> {char.description}</div>
