@@ -26,3 +26,9 @@
   background: black;
   border: none;
 }
+
+.count-result {
+  margin-left: 300px;
+  font-size: 18px;
+  color: lightseagreen;
+}

@@ -92,6 +92,9 @@ const Characters = ({ page, setPage, search, setSearch, userToken }) => {
           >
             X
           </button>
+          <span className="count-result">
+            {count} personnages {search && `pour ${search}`}
+          </span>
         </div>
       </div>
 

@@ -25,3 +25,9 @@
   color: red;
   background: black;
 }
+
+.characters-header .count-result {
+  margin-left: 300px;
+  font-size: 18px;
+  color: lightcoral;
+}

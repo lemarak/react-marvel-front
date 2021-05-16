@@ -91,6 +91,9 @@ const Comics = ({ page, setPage, search, setSearch, userToken }) => {
           >
             X
           </button>
+          <span className="count-result">
+            {count} comics {search && `pour ${search}`}
+          </span>
         </div>
       </div>
       <Pagination page={page} setPage={setPage} count={count} limit={LIMIT} />

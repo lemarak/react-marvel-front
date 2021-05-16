@@ -10,56 +10,58 @@ const Pagination = ({ page, setPage, count, limit }) => {
   return pageMax <= 1 ? (
     <div className="pagination"></div>
   ) : (
-    <div className="pagination">
-      {/* First Page */}
-      {page > 1 && pageMax > 2 && (
-        <div
-          onClick={() => {
-            setPage(1);
-          }}
-        >
+    <div>
+      <div className="pagination">
+        {/* First Page */}
+        {page > 1 && pageMax > 2 && (
+          <div
+            onClick={() => {
+              setPage(1);
+            }}
+          >
+            {" "}
+            <FontAwesomeIcon icon="fast-backward" className="icon" />{" "}
+          </div>
+        )}
+        {/* Previous Page */}
+        {page > 1 && (
+          <div
+            onClick={() => {
+              setPage(page - 1);
+            }}
+          >
+            {" "}
+            <FontAwesomeIcon icon="backward" className="icon" />{" "}
+          </div>
+        )}
+        {/* Display pages */}
+        <span>
           {" "}
-          <FontAwesomeIcon icon="fast-backward" className="icon" />{" "}
-        </div>
-      )}
-      {/* Previous Page */}
-      {page > 1 && (
-        <div
-          onClick={() => {
-            setPage(page - 1);
-          }}
-        >
-          {" "}
-          <FontAwesomeIcon icon="backward" className="icon" />{" "}
-        </div>
-      )}
-      {/* Display pages */}
-      <span>
-        {" "}
-        page {page} / {pageMax}
-      </span>
-      {/* Next page */}
-      {page < pageMax && (
-        <div
-          onClick={() => {
-            setPage(page + 1);
-          }}
-        >
-          {" "}
-          <FontAwesomeIcon icon="forward" className="icon" />{" "}
-        </div>
-      )}
-      {/* Last page */}
-      {page < pageMax && pageMax > 2 && (
-        <div
-          onClick={() => {
-            setPage(pageMax);
-          }}
-        >
-          {" "}
-          <FontAwesomeIcon icon="fast-forward" className="icon" />{" "}
-        </div>
-      )}
+          page {page} / {pageMax}
+        </span>
+        {/* Next page */}
+        {page < pageMax && (
+          <div
+            onClick={() => {
+              setPage(page + 1);
+            }}
+          >
+            {" "}
+            <FontAwesomeIcon icon="forward" className="icon" />{" "}
+          </div>
+        )}
+        {/* Last page */}
+        {page < pageMax && pageMax > 2 && (
+          <div
+            onClick={() => {
+              setPage(pageMax);
+            }}
+          >
+            {" "}
+            <FontAwesomeIcon icon="fast-forward" className="icon" />{" "}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
