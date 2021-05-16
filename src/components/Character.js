@@ -28,12 +28,14 @@ const Character = ({ char, isFav, setFavCharacters, userToken }) => {
   return (
     <div className="character-card">
       <Link className="link" to={`character/${char._id}`}>
-        <h3>{char.name}</h3>
+        <div className="title">
+          <h3>{char.name}</h3>
+        </div>
         <div className="character-img">
           <img src={srcChar} alt={char.name} />
         </div>
       </Link>
-      <br />
+
       {userToken && (
         <FontAwesomeIcon
           icon="star"

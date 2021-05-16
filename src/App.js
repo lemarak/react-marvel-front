@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import Header from "./components/Header";
 import Characters from "./containers/Characters";
 import Comics from "./containers/Comics";
+import ComicsDetail from "./containers/ComicsDetail";
 import CharacterComics from "./containers/CharacterComics";
 import Favorites from "./containers/Favorites";
 import Signup from "./containers/Signup";
@@ -30,8 +31,8 @@ function App() {
   const [pageCharacters, setPageCharacters] = useState(1);
   const [pageComics, setPageComics] = useState(1);
   // Search
-  const [searchCharacter, setSearchCharacter] = useState();
-  const [searchComic, setSearchComic] = useState();
+  const [searchCharacter, setSearchCharacter] = useState("");
+  const [searchComic, setSearchComic] = useState("");
   // Users
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
   const setUser = (token) => {
@@ -64,9 +65,13 @@ function App() {
             userToken={userToken}
           />
         </Route>
-        <Route path="/character/:id">
-          <CharacterComics />
+        <Route path="/comic/:id">
+          <ComicsDetail userToken={userToken} />
         </Route>
+        <Route path="/character/:id">
+          <CharacterComics userToken={userToken} />
+        </Route>
+
         <Route path="/favorites">
           <Favorites userToken={userToken} />
         </Route>

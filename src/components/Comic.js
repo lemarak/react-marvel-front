@@ -26,30 +26,32 @@ const Comic = ({ comic, isFav, setFavComics, userToken }) => {
     }
   };
 
-  const srcComic = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
   return (
-    <Link>
-      <div className="comic-card">
-        <div>{comic.title}</div>
+    <div className="comic-card">
+      <Link className="comic-card-link" to={`/comic/${comic._id}`}>
+        <div className="comic-title">{comic.title}</div>
         <div className="comic-img">
-          <img src={srcComic} alt={comic.title} />
-        </div>
-        <br />
-        {userToken && (
-          <FontAwesomeIcon
-            icon="star"
-            className={`icon ${isFav && "icon-isfav"}`}
-            onClick={() => {
-              adminFavorites(isFav);
-            }}
+          <img
+            src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+            alt={comic.title}
           />
-        )}
-
-        <div className="comic-description">
-          {/* <span> {comic.description}</span> */}
         </div>
+      </Link>
+      <br />
+      {userToken && (
+        <FontAwesomeIcon
+          icon="star"
+          className={`icon ${isFav && "icon-isfav"}`}
+          onClick={() => {
+            adminFavorites(isFav);
+          }}
+        />
+      )}
+
+      <div className="comic-description">
+        {/* <span> {comic.description}</span> */}
       </div>
-    </Link>
+    </div>
   );
 };
 

@@ -1,0 +1,28 @@
+.comic-detail {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comic-detail-description-img {
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comic-detail-description {
+  flex: 1;
+  margin-right: 40px;
+  line-height: 24px;
+}
+
+.comic-detail-img {
+  flex: 1;
+}
+
+.comic-detail-img img {
+  height: 520px;
+  width: 360px;
+  border-radius: 5px;
+  object-fit: cover;
+}

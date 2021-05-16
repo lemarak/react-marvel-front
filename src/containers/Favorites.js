@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 import Comic from "../components/Comic";
 import Character from "../components/Character";
+import IsLoading from "../components/IsLoading";
 
 const Favorites = ({ userToken }) => {
   const [favCharacters, setFavCharacters] = useState([]);
@@ -23,6 +24,7 @@ const Favorites = ({ userToken }) => {
           );
           setFavCharacters(response.data.favoritesCharacters);
           setFavComics(response.data.favoritesComics);
+          setIsLoading(false);
         }
       } catch (error) {
         console.log(error.message);
@@ -103,7 +105,9 @@ const Favorites = ({ userToken }) => {
     );
   });
 
-  return (
+  return isLoading ? (
+    <IsLoading />
+  ) : (
     <section className="container">
       <h1>Mes favoris</h1>
       {comicsDisplay.length > 0 && (

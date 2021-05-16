@@ -37,15 +37,11 @@ const Characters = ({ page, setPage, search, setSearch, userToken }) => {
     const fetchData = async () => {
       try {
         let response = [];
-        if (search) {
-          response = await axios.get(
-            `${process.env.REACT_APP_PATH_SERVER}/search/characters?name=${search}`
-          );
-        } else {
-          response = await axios.get(
-            `${process.env.REACT_APP_PATH_SERVER}/characters?page=${page}`
-          );
-        }
+
+        response = await axios.get(
+          `${process.env.REACT_APP_PATH_SERVER}/characters?page=${page}&name=${search}`
+        );
+
         setCharacters(response.data.results);
         setCount(response.data.count);
         setIsLoading(false);

@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import IsLoading from "../components/IsLoading";
 import Comic from "../components/Comic";
 
-const CharacterComics = () => {
+const CharacterComics = ({ userToken }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [character, setCharacter] = useState();
   const [comics, setComics] = useState([]);

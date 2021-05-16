@@ -38,15 +38,10 @@ const Comics = ({ page, setPage, search, setSearch, userToken }) => {
     const fetchData = async () => {
       let response = [];
       try {
-        if (search) {
-          response = await axios.get(
-            `${process.env.REACT_APP_PATH_SERVER}/search/comics?title=${search}`
-          );
-        } else {
-          response = await axios.get(
-            `${process.env.REACT_APP_PATH_SERVER}/comics?page=${page}`
-          );
-        }
+        response = await axios.get(
+          `${process.env.REACT_APP_PATH_SERVER}/comics?page=${page}&title=${search}`
+        );
+
         setComics(response.data.results);
         setCount(response.data.count);
         setIsLoading(false);
