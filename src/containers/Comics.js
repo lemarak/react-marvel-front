@@ -21,11 +21,11 @@ const Comics = ({ page, setPage, search, setSearch }) => {
       try {
         if (search) {
           response = await axios.get(
-            `https://marvel-back-sda.herokuapp.com/search/comics?title=${search}`
+            `${process.env.REACT_APP_PATH_SERVER}/search/comics?title=${search}`
           );
         } else {
           response = await axios.get(
-            `https://marvel-back-sda.herokuapp.com/comics?page=${page}`
+            `${process.env.REACT_APP_PATH_SERVER}/comics?page=${page}`
           );
         }
         setComics(response.data.results);

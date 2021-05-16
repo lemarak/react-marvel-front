@@ -20,6 +20,9 @@ import {
   faAngleRight,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
+
+require("dotenv").config();
+
 library.add(faSpinner, faAngleLeft, faAngleRight, faStar);
 
 function App() {
@@ -72,6 +75,7 @@ function App() {
             setPage={setPageCharacters}
             search={searchCharacter}
             setSearch={setSearchCharacter}
+            userToken={userToken}
           />
         </Route>
       </Switch>

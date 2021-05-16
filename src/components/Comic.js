@@ -6,12 +6,14 @@ import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+require("dotenv").config();
+
 const Comic = ({ comic }) => {
   const addToFavorites = async () => {
     try {
       const token = Cookies.get("userToken");
       const response = await axios.get(
-        `https://marvel-back-sda.herokuapp.com/comic/add-favorites/${token}/${comic._id}`
+        `${process.env.REACT_APP_PATH_SERVER}/comic/add-favorites/${token}/${comic._id}`
         // `http://localhost:4000/comic/add-favorites/${token}/${comic._id}`
       );
       console.log(response);

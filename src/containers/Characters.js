@@ -7,12 +7,30 @@ import IsLoading from "../components/IsLoading";
 import Character from "../components/Character";
 import Pagination from "../components/Pagination";
 
-const Characters = ({ page, setPage, search, setSearch }) => {
+const Characters = ({ page, setPage, search, setSearch, userToken }) => {
   const LIMIT = 100;
 
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [count, setCount] = useState(0);
+  const [favCharacters, setFavCharacters] = useState([]);
+
+  // Get favorites
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (userToken) {
+          const response = await axios.get(
+            `${process.env.REACT_APP_PATH_SERVER}/user?token=${userToken}`
+          );
+          setFavCharacters(response.data.favoritesCharacters);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, []);
 
   // Get characters from API
   useEffect(() => {
@@ -36,7 +54,7 @@ const Characters = ({ page, setPage, search, setSearch }) => {
       }
     };
     fetchData();
-  }, [page, search]);
+  }, [page, search, userToken]);
 
   // For search
   const handleSearch = (event) => {
@@ -45,7 +63,15 @@ const Characters = ({ page, setPage, search, setSearch }) => {
 
   // Display characters
   const charactersDisplay = characters.map((elem, index) => {
-    return <Character key={index} char={elem} />;
+    const isFav = favCharacters.indexOf(elem._id) !== -1;
+    return (
+      <Character
+        key={index}
+        char={elem}
+        isFav={isFav}
+        setFavCharacters={setFavCharacters}
+      />
+    );
   });
 
   // Render

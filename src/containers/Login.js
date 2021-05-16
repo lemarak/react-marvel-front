@@ -30,7 +30,7 @@ const Login = ({ setUser }) => {
       setError(0);
       try {
         const response = await axios.post(
-          "https://marvel-back-sda.herokuapp.com/user/login",
+          `${process.env.REACT_APP_PATH_SERVER}/user/login`,
           data
         );
         const token = response.data.token;

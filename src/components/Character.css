@@ -50,6 +50,10 @@
   color: lightcoral;
 }
 
+.character-card .icon-isfav {
+  color: lightcoral;
+}
+
 .character-description {
   height: 80px;
   overflow: hidden;

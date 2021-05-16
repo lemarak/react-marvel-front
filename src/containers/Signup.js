@@ -38,7 +38,7 @@ const Signup = ({ setUser }) => {
         try {
           const response = await axios.post(
             // "https://marvel-back-sda.herokuapp.com/user/signup",
-            "http://localhost:4000/user/signup",
+            `${process.env.REACT_APP_PATH_SERVER}/user/signup`,
             data
           );
           const token = response.data.token;

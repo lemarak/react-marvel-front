@@ -18,7 +18,7 @@ const CharacterComics = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://marvel-back-sda.herokuapp.com/comics/${id}`
+          `${process.env.REACT_APP_PATH_SERVER}/comics/${id}`
         );
         console.log(response.data);
         setCharacter(response.data);

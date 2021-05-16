@@ -6,15 +6,16 @@ import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Character = ({ char }) => {
+const Character = ({ char, isFav, setFavCharacters }) => {
   const addToFavorites = async () => {
     try {
       const token = Cookies.get("userToken");
       const response = await axios.get(
-        `https://marvel-back-sda.herokuapp.com/character/add-favorites/${token}/${char._id}`
+        `${process.env.REACT_APP_PATH_SERVER}/character/add-favorites/${token}/${char._id}`
         // `http://localhost:4000/comic/add-favorites/${token}/${comic._id}`
       );
-      console.log(response);
+      console.log(response.data);
+      setFavCharacters(response.data.favoritesCharacters);
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -30,7 +31,11 @@ const Character = ({ char }) => {
         </div>
       </Link>
       <br />
-      <FontAwesomeIcon icon="star" className="icon" onClick={addToFavorites} />
+      <FontAwesomeIcon
+        icon="star"
+        className={`icon ${isFav && "icon-isfav"}`}
+        onClick={addToFavorites}
+      />
       <div className="character-description">
         <div> {char.description}</div>
       </div>
