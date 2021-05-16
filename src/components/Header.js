@@ -7,39 +7,41 @@ import Logo from "../assets/img/logo-marvel.svg";
 const Header = ({ userToken, setUser }) => {
   return (
     <header>
-      <Link to="/">
-        <img className="logo" src={Logo} alt="Logo Marvel" />
-      </Link>
-
-      <ul>
+      <div className="header-container">
         <Link to="/">
-          <li>Personnages</li>
-        </Link>
-        <Link to="/comics">
-          <li>Comics</li>
+          <img className="logo" src={Logo} alt="Logo Marvel" />
         </Link>
 
-        {userToken && (
-          <Link to="/favorites">
-            <li>Favoris</li>
+        <ul>
+          <Link to="/">
+            <li>Personnages</li>
           </Link>
-        )}
-      </ul>
+          <Link to="/comics">
+            <li>Comics</li>
+          </Link>
 
-      <ul>
-        {userToken ? (
-          <li onClick={() => setUser(null)}>déconnexion </li>
-        ) : (
-          <>
-            <Link to="/signup">
-              <li>inscription</li>
+          {userToken && (
+            <Link to="/favorites">
+              <li>Favoris</li>
             </Link>
-            <Link to="/login">
-              <li>connexion</li>
-            </Link>
-          </>
-        )}
-      </ul>
+          )}
+        </ul>
+
+        <ul>
+          {userToken ? (
+            <li onClick={() => setUser(null)}>déconnexion </li>
+          ) : (
+            <>
+              <Link to="/signup">
+                <li>inscription</li>
+              </Link>
+              <Link to="/login">
+                <li>connexion</li>
+              </Link>
+            </>
+          )}
+        </ul>
+      </div>
     </header>
   );
 };

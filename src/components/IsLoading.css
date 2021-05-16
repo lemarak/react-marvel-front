@@ -1,11 +1,13 @@
 .loading {
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #ed1c24;
 }
 
 .loading span {
-  margin-top: 20px;
   font-size: 30px;
+  margin-top: 20px;
 }

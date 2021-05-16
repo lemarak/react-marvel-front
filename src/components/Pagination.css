@@ -10,3 +10,10 @@
   margin: 0 6px;
   cursor: pointer;
 }
+
+.pagination .icon:hover {
+  margin: 0 6px;
+  cursor: pointer;
+  color: lightcoral;
+  font-size: 26px;
+}

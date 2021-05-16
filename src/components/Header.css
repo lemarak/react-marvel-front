@@ -1,14 +1,22 @@
 header {
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
   height: 80px;
-  width: 1240px;
+  width: 100%;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   color: white;
   background-color: #111;
 }
 
+.header-container {
+  width: 1240px;
+  margin: 0 auto;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 header .logo {
   width: 100px;
 }
@@ -21,6 +29,7 @@ header ul {
 header ul li {
   margin-left: 30px;
   list-style-type: none;
+  cursor: pointer;
 }
 
 header ul li:last-child {
@@ -29,4 +38,30 @@ header ul li:last-child {
 
 header li:hover {
   font-weight: 700;
+}
+
+@media (max-width: 1200px) {
+  header {
+    overflow: hidden;
+    position: inherit; /* Set the navbar to fixed position */
+  }
+  .header-container {
+    height: 80px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 720px) {
+  header {
+    height: 140px;
+  }
+  .header-container {
+    flex-direction: column;
+    height: 140px;
+  }
+
+  header ul {
+    flex-direction: column;
+  }
 }

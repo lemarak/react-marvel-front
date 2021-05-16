@@ -8,7 +8,7 @@ body {
 
 .container {
   width: 1240px;
-  margin: 0 auto;
+  margin: 100px auto;
 }
 
 h1,
@@ -26,3 +26,16 @@ a {
 input {
   outline: none;
 }
+
+@media (max-width: 1024px) {
+  .container {
+    width: 80%;
+    margin: 40px auto;
+  }
+}
+
+/* @media (max-width: 720px) {
+  .container {
+    margin-top: 140px;
+  }
+} */

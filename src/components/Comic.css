@@ -29,6 +29,7 @@
 .comic-card .icon {
   font-size: 22px;
   cursor: pointer;
+  color: rgba(252, 248, 248, 0.4);
 }
 .comic-card .icon:hover {
   cursor: pointer;

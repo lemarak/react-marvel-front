@@ -36,7 +36,6 @@ const Comics = ({ page, setPage, search, setSearch, userToken }) => {
   // Get comics from API
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
       let response = [];
       try {
         response = await axios.get(
