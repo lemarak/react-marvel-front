@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Character = ({ char, isFav, setFavCharacters }) => {
+const Character = ({ char, isFav, setFavCharacters, userToken }) => {
   // favorites
   const adminFavorites = async (isFav) => {
     try {
@@ -34,13 +34,16 @@ const Character = ({ char, isFav, setFavCharacters }) => {
         </div>
       </Link>
       <br />
-      <FontAwesomeIcon
-        icon="star"
-        className={`icon ${isFav && "icon-isfav"}`}
-        onClick={() => {
-          adminFavorites(isFav);
-        }}
-      />
+      {userToken && (
+        <FontAwesomeIcon
+          icon="star"
+          className={`icon ${isFav && "icon-isfav"}`}
+          onClick={() => {
+            adminFavorites(isFav);
+          }}
+        />
+      )}
+
       <div className="character-description">
         <div> {char.description}</div>
       </div>

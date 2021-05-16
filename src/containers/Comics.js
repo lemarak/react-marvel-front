@@ -31,7 +31,7 @@ const Comics = ({ page, setPage, search, setSearch, userToken }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [userToken]);
 
   // Get comics from API
   useEffect(() => {
@@ -70,6 +70,7 @@ const Comics = ({ page, setPage, search, setSearch, userToken }) => {
         key={index}
         comic={elem}
         isFav={isFav}
+        userToken={userToken}
         setFavComics={setFavComics}
       />
     );

@@ -68,7 +68,7 @@ function App() {
           <CharacterComics />
         </Route>
         <Route path="/favorites">
-          <Favorites />
+          <Favorites userToken={userToken} />
         </Route>
         <Route path="/">
           <Characters

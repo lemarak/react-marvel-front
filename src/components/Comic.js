@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 require("dotenv").config();
 
-const Comic = ({ comic, isFav, setFavComics }) => {
+const Comic = ({ comic, isFav, setFavComics, userToken }) => {
   // Favorites
   const adminFavorites = async (isFav) => {
     try {
@@ -35,13 +35,16 @@ const Comic = ({ comic, isFav, setFavComics }) => {
           <img src={srcComic} alt={comic.title} />
         </div>
         <br />
-        <FontAwesomeIcon
-          icon="star"
-          className={`icon ${isFav && "icon-isfav"}`}
-          onClick={() => {
-            adminFavorites(isFav);
-          }}
-        />
+        {userToken && (
+          <FontAwesomeIcon
+            icon="star"
+            className={`icon ${isFav && "icon-isfav"}`}
+            onClick={() => {
+              adminFavorites(isFav);
+            }}
+          />
+        )}
+
         <div className="comic-description">
           {/* <span> {comic.description}</span> */}
         </div>

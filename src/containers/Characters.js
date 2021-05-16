@@ -30,7 +30,7 @@ const Characters = ({ page, setPage, search, setSearch, userToken }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [userToken]);
 
   // Get characters from API
   useEffect(() => {
@@ -69,6 +69,7 @@ const Characters = ({ page, setPage, search, setSearch, userToken }) => {
         key={index}
         char={elem}
         isFav={isFav}
+        userToken={userToken}
         setFavCharacters={setFavCharacters}
       />
     );
